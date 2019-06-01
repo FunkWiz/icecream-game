@@ -5,7 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  background-image: url("./static/stars.png");
+  background-repeat: repeat;
+  background-color: #001a71;
+  background-size: cover;
+  background-position: center top;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
