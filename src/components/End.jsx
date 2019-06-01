@@ -30,7 +30,6 @@ input {
     border-bottom:2px solid #fff;
     padding:10px;
     padding-top:0;
-    max-width:400px;
     margin:0 auto 10px;
     color:#fff;
     font-size:18px;
@@ -52,12 +51,23 @@ button {
     font-weight:700;
     font-size:20px;
 }
-`
+`;
+
+const FieldContainer = styled.div`
+display:flex;
+margin-bottom:10px;
+input {
+    margin: 0 5px;
+    flex:1;
+    width:100%;
+}
+`;
 
 const End = ({ onNext }) => {
-    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const handleSubmit = () => {
-        if (email.length === 0) {
+        if (firstName.length === 0 || lastName.length === 0) {
             return;
         }
         onNext('thankYou');
@@ -70,13 +80,20 @@ const End = ({ onNext }) => {
                 <span>Save the planet, sign the petition now.</span>
             </Disclaimer>
             <FormContainer>
-                <input
-                    type="email"
-                    required
-                    placeholder="Enter your email address"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                />
+                <FieldContainer>
+                    <input
+                        required
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={event => setFirstName(event.target.value)}
+                    />
+                    <input
+                        required
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={event => setLastName(event.target.value)}
+                    />
+                </FieldContainer>
                 <button type="button" onClick={handleSubmit}>SIGN UP</button>
             </FormContainer>
         </Container>

@@ -18,3 +18,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.mock-popsicle {
+  right:15px;
+  top:85px !important;
+  left:auto !important;
+  display:inline-block;
+}

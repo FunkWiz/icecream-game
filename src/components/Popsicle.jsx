@@ -25,18 +25,21 @@ const PopsicleImage = styled.img`
     width: ${props => `${props.width}`};
 `;
 
-const Popsicle = ({ images, index, delay = 0, speed = 150, onScore }) => {
-    const [width, setWidth] = useState(getRandomArbitrary(120, 300));
+const Popsicle = ({ images, index, delay = 0, speed = 150, onScore, disableTweaks = false, className = '' }) => {
+    const [width, setWidth] = useState(disableTweaks ? 90 : getRandomArbitrary(120, 300));
     const popElement = useRef(null);
     const [start, setStart] = useState(false);
     const [frame, setFrame] = useState({
         idx: 0,
         value: images[0]
     });
-    const [position, setPosition] = useState({
-        x: -1000,
-        y: -1000
-    });
+    const [position, setPosition] = useState(disableTweaks ? {
+        x: 0,
+        y: 0
+    } : {
+            x: -1000,
+            y: -1000
+        });
     const [melted, setMelted] = useState(false);
     const [fixed, setFixed] = useState(false);
     const handleSwipe = eventData => {
@@ -53,7 +56,7 @@ const Popsicle = ({ images, index, delay = 0, speed = 150, onScore }) => {
     const handlers = useSwipeable({ onSwiped: handleSwipe })
     useEffect(() => {
         let cancel = false;
-        if (popElement.current && position.x < 0) {
+        if (popElement.current && position.x < 0 && !disableTweaks) {
             const [x, y] = getRandomPosition(popElement.current);
             setPosition({ x, y });
         }
@@ -81,7 +84,7 @@ const Popsicle = ({ images, index, delay = 0, speed = 150, onScore }) => {
             }
             const newIdx = frame.idx + 1;
             if (newIdx >= images.length) {
-                if(cancel) return;
+                if (cancel) return;
                 setMelted(true);
                 return;
             }
@@ -101,6 +104,7 @@ const Popsicle = ({ images, index, delay = 0, speed = 150, onScore }) => {
 
     return (
         <PopsicleContainer
+            className={className}
             style={{
                 zIndex: index,
                 transform: `translate3d(${position.x}px, ${position.y}px ,0)`

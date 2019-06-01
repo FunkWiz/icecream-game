@@ -54,10 +54,10 @@ const PreGame = ({ onNext }) => {
     }, [time])
     return (
         <CountdownWrapper>
-            {isNaN(time) ? <></> : <Popsicle speed={100} images={blue} />}
+            <Popsicle speed={300} images={blue} disableTweaks className="mock-popsicle" />
             <Instructions>
                 <span>Swipe the ice cream before it melts!</span>
-                <img src={swipeImg} />
+                <img src={swipeImg} width="90" />
             </Instructions>
             <span>{time}</span>
         </CountdownWrapper>
