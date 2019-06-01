@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import swipeImg from "../static/swipe.gif";
+import Popsicle from "./Popsicle";
+import { blue } from "../popsicles";
 
 const CountdownWrapper = styled.div`
 height:100%;
@@ -9,10 +12,26 @@ justify-content:center;
 text-align:center;
 position:relative;
 z-index:220;
-span {
+> span {
     font-size:60px;
     color:#fff;
     font-weight:700;
+}
+`;
+
+const Instructions = styled.div`
+position:absolute;
+display:flex;
+justify-content:center;
+align-items:center;
+top:90px;
+left:100px;
+img {
+    width:90px;
+}
+span {
+    font-size:20px;
+    color:#fff;
 }
 `;
 
@@ -27,7 +46,7 @@ const PreGame = ({ onNext }) => {
                 onNext('game');
                 return;
             }
-            setTime(time === 1 ? 'SAVE THE WORLD' : time - 1);
+            setTime(time === 1 ? 'SAVE THE PLANET' : time - 1);
         }, 1000);
         return () => {
             cancel = true;
@@ -35,6 +54,11 @@ const PreGame = ({ onNext }) => {
     }, [time])
     return (
         <CountdownWrapper>
+            {isNaN(time) ? <></> : <Popsicle speed={100} images={blue} />}
+            <Instructions>
+                <span>Swipe the ice cream before it melts!</span>
+                <img src={swipeImg} />
+            </Instructions>
             <span>{time}</span>
         </CountdownWrapper>
     )

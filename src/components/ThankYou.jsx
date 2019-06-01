@@ -50,7 +50,7 @@ const ThankYou = ({ onNext }) => {
                 Thank you for signing the petition.
             </Disclaimer>
             <ReplayButton decorated={decorated} onClick={() => {
-                onNext('game');
+                onNext('preGame');
             }}>PLAY AGAIN</ReplayButton>
         </Container >
     )
