@@ -32,7 +32,7 @@ const Start = ({ onNext }) => {
     useEffect(() => {
         let cancel = false;
         setTimeout(() => {
-            if(cancel) return;
+            if (cancel) return;
             setDecorated(!decorated)
         }, 500);
 

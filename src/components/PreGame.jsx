@@ -13,9 +13,12 @@ text-align:center;
 position:relative;
 z-index:220;
 > span {
-    font-size:60px;
+    font-size:90px;
     color:#fff;
     font-weight:700;
+    &.word {
+        font-size:50px;
+    }
 }
 `;
 
@@ -59,7 +62,7 @@ const PreGame = ({ onNext }) => {
                 <span>Swipe the ice cream before it melts!</span>
                 <img src={swipeImg} width="90" />
             </Instructions>
-            <span>{time}</span>
+            <span className={isNaN(time) ? 'word' : ''}>{time}</span>
         </CountdownWrapper>
     )
 }

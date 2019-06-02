@@ -14,9 +14,10 @@ span {
 }
 `;
 
+
 const GameHeading = ({ score, gameTime = 45, onFinish }) => {
     const [time, setTime] = useState(gameTime);
-
+    const [tick, setTick] = useState(0);
     useEffect(() => {
         let cancel = false;
         setTimeout(() => {
@@ -26,17 +27,22 @@ const GameHeading = ({ score, gameTime = 45, onFinish }) => {
                 return;
             }
             setTime(time - 1);
+            setTick(tick + 1);
         }, 1000);
         return () => {
             cancel = true;
         }
-    }, [time])
+    }, [time, tick])
     const _timeDisplay = time >= 10 ? `00:${time}` : `00:0${time}`;
+
+
     return (
-        <CountdownWrapper>
-            <span>{score}</span>
-            <span>{_timeDisplay}</span>
-        </CountdownWrapper>
+        <>
+            <CountdownWrapper>
+                <span>{score}</span>
+                <span>{_timeDisplay}</span>
+            </CountdownWrapper>
+        </>
     )
 }
 export default GameHeading;
