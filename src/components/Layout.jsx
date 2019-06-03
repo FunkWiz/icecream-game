@@ -34,6 +34,15 @@ transform:${props => props.show ? 'translate3d(190px,0,0) rotate(91deg)' : 'tran
 transition: transform 1.5s;
 `;
 
+const Credit = styled.span`
+position:absolute;
+bottom:5px;
+left:0;
+right:0;
+text-align:center;
+color:#fff;
+font-size:16px;
+`
 
 export default ({ children, showDecorations }) => (
     <Container>
@@ -47,5 +56,6 @@ export default ({ children, showDecorations }) => (
         <Sun show={showDecorations}>
             <img src={pngImg} />
         </Sun>
+        <Credit>&#9400;{' '}טל פרלשטיין ומאור עוז </Credit>
     </Container>
 )
