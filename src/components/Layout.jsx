@@ -56,6 +56,6 @@ export default ({ children, showDecorations }) => (
         <Sun show={showDecorations}>
             <img src={pngImg} />
         </Sun>
-        <Credit>&#9400;{' '}טל פרלשטיין ומאור עוז </Credit>
+        {/* <Credit>&#9400;{' '}טל פרלשטיין ומאור עוז </Credit> */}
     </Container>
 )
